@@ -1,0 +1,22 @@
+-- NetMaskGroup
+whiteip = newNMG();
+
+-- NO FILTERING WHEN QUERY COMES FROM THESE IPS
+
+-- Sonos
+whiteip:addMask("192.168.1.40/32")
+whiteip:addMask("192.168.1.41/32")
+whiteip:addMask("192.168.1.42/32")
+whiteip:addMask("192.168.1.43/32")
+
+-- Allow
+-- addAction(NetmaskGroupRule(whiteip, true), AllowAction())
+addAction(NetmaskGroupRule(whiteip, true), LuaAction(allow_ip))
+
+-- Private addrs
+-- load_ip_list("/opt/accomplist/chris/private-addresses.list", false, true)
+-- load_ip_list("/opt/accomplist/chris/white.ing.ip.list", false, true)
+-- load_ip_list("/opt/accomplist/chris/white.kpn.ip.list", false, true)
+-- load_ip_list("/opt/accomplist/chris/white.ns1.ip.list", false, true)
+-- load_ip_list("/opt/accomplist/chris/white.wework.ip.list", false, true)
+

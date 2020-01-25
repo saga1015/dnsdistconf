@@ -1,0 +1,12 @@
+-- Special
+special = newSuffixMatchNode();
+
+-- Doms
+special:add(newDNSName("amsterdam"))
+special:add(newDNSName("bank"))
+special:add(newDNSName("beer"))
+special:add(newDNSName("insurance"))
+
+-- Allow
+addAction(SuffixMatchNodeRule(special, false), LuaAction(allow_dom))
+

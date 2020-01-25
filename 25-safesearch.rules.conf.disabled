@@ -1,0 +1,37 @@
+-- Google - forcesafesearch.google.com
+-- ssgoogle = newSuffixMatchNode();
+-- ssgoogle:add(newDNSName("www.google.com"))
+-- ssgoogle:add(newDNSName("www.google.nl"))
+-- ssgoogle:add(newDNSName("www.google.fr"))
+-- addAction(SuffixMatchNodeRule(ssgoogle, false), SpoofAction({"216.239.38.120", "2001:4860:4802:32::78"}))
+addAction(RegexRule("^(www\\.)*google\\.([a-z]{2,3}\\.)*[a-z]{2,3}$"), SpoofAction({"216.239.38.120", "2001:4860:4802:32::78"}))
+
+-- Youtube - restrictmoderate.youtube.com
+ssyoutube = newSuffixMatchNode();
+ssyoutube:add(newDNSName("youtube.com"))
+-- ssyoutube:add(newDNSName("m.youtube.com"))
+-- ssyoutube:add(newDNSName("www.youtube.com"))
+ssyoutube:add(newDNSName("youtube-nocookie.com"))
+-- ssyoutube:add(newDNSName("www.youtube-nocookie.com"))
+ssyoutube:add(newDNSName("youtube.googleapis.com"))
+ssyoutube:add(newDNSName("youtubei.googleapis.com"))
+addAction(SuffixMatchNodeRule(ssyoutube, false), SpoofAction({"216.239.38.119", "2001:4860:4802:32::77"}))
+
+-- Youtube ad blocker - see https://www.reddit.com/r/pihole/comments/9w5swx/i_think_ive_managed_to_block_youtube_ads_with
+-- addAction(newDNSName("manifest.googlevideo.com"), SpoofAction({"172.217.17.142", "2a00:1450:400e:804::200e"}))
+
+-- Bing - strict.bing.com
+ssbing = newSuffixMatchNode();
+ssbing:add(newDNSName("bing.com"))
+addAction(SuffixMatchNodeRule(ssbing, false), SpoofAction("204.79.197.220"))
+
+-- DuckDuckGo - safe.duckduckgo.com
+ssddg = newSuffixMatchNode();
+ssddg:add(newDNSName("duckduckgo.com"))
+addAction(SuffixMatchNodeRule(ssddg, false), SpoofAction({"54.229.105.151", "79.125.105.136", "79.125.106.1"}))
+
+-- PixABay - safesearch.pixabay.com
+sspab = newSuffixMatchNode();
+sspab:add(newDNSName("pixabay.com"))
+addAction(SuffixMatchNodeRule(sspab, false), SpoofAction({"104.18.82.97", "104.18.141.87", "2606:4700::6812:5261", "2606:4700::6812:8d57"}))
+
